@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/user_navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@id/listUserGithubFragment">
+
+    <fragment
+        android:id="@+id/listUserGithubFragment"
+        android:name="com.test.presentation.views.listuser.ListUserGithubFragment"
+        android:label="fragment_list_user_github"
+        app:route="@string/list_user_route"
+        tools:layout="@layout/fragment_list_user_github" />
+    <fragment
+        android:id="@+id/detailUserGithubFragment"
+        android:name="com.test.presentation.views.detailuser.DetailUserGithubFragment"
+        android:label="fragment_detail_user_github"
+        app:route="@string/detail_user_route"
+        tools:layout="@layout/fragment_detail_user_github" />
 
 </navigation>

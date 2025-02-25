@@ -13,5 +13,6 @@ data class UserUI(
     val twitterUsername: String = "",
     val publicRepos: String = "",
     val followers: String = "",
-    val following: String = ""
+    val following: String = "",
+    val company: String = ""
 )

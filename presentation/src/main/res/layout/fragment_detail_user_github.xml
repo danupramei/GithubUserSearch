@@ -190,16 +190,234 @@
         app:layout_constraintTop_toBottomOf="@id/ll_stat" />
 
     <TextView
-        android:id="@+id/tv_detail_bio"
+        android:id="@+id/tv_bio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimens_16dp"
-        android:layout_marginTop="@dimen/dimens_4dp"
+        android:layout_marginTop="@dimen/dimens_8dp"
+        android:layout_weight="0.74"
+        android:ellipsize="end"
+        android:maxLines="5"
         android:textColor="@color/black"
         android:textSize="@dimen/text_14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_txt_detail_about"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+        tools:text="Indonesia" />
+
+    <TextView
+        android:id="@+id/tv_other_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:layout_marginTop="@dimen/dimens_16dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="@string/other_info"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bio" />
+
+    <LinearLayout
+        android:id="@+id/ll_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:layout_marginTop="@dimen/dimens_8dp"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_other_detail"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/location"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_4dp"
+            android:text="@string/equals"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.74"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14sp"
+            tools:text="Indonesia" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_company"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:layout_marginTop="@dimen/dimens_8dp"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_location"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/company"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_4dp"
+            android:text="@string/equals"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.74"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14sp"
+            tools:text="Indonesia" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_blog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:layout_marginTop="@dimen/dimens_8dp"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_company"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/personal_blog"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_4dp"
+            android:text="@string/equals"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:id="@+id/tv_blog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.74"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14sp"
+            tools:text="Indonesia" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:layout_marginTop="@dimen/dimens_8dp"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_blog"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/email"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_4dp"
+            android:text="@string/equals"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.74"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14sp"
+            tools:text="Indonesia" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_twitter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:layout_marginTop="@dimen/dimens_8dp"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_email"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.26"
+            android:text="@string/twitter"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_4dp"
+            android:text="@string/equals"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/text_14sp" />
+
+        <TextView
+            android:id="@+id/tv_twitter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.74"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14sp"
+            tools:text="Indonesia" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

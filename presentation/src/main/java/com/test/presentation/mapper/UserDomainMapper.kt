@@ -19,7 +19,8 @@ fun UserDomain?.toUiModel(): UserUI = this?.run {
         twitterUsername = twitterUsername,
         publicRepos = publicRepos.toString(),
         followers = followers.toString(),
-        following = following.toString()
+        following = following.toString(),
+        company = company
     )
 } ?: UserUI()
 

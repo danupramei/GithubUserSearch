@@ -4,4 +4,11 @@
     <string name="following">Following</string>
     <string name="followers">Followers</string>
     <string name="about_me">About me</string>
+    <string name="other_info">Other info</string>
+    <string name="location">Lokasi</string>
+    <string name="equals">:</string>
+    <string name="company">Perusahaan</string>
+    <string name="personal_blog">Personal blog</string>
+    <string name="email">Email</string>
+    <string name="twitter">Twitter</string>
 </resources>

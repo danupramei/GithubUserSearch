@@ -7,4 +7,5 @@
     <color name="ripple_color_dark">#99252727</color>
     <color name="blue">#36C8F4</color>
     <color name="ice_blue">#D8F5FB</color>
+    <color name="black_text">#2E2E2E</color>
 </resources>

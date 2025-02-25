@@ -6,10 +6,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import com.test.presentation.databinding.FragmentDetailUserGithubBinding
 import com.test.presentation.models.UserUI
+import com.test.presentation.utils.hideView
+import com.test.presentation.utils.ifNotNullOrBlankThenElse
 import com.test.presentation.utils.launchAndCollectIn
 import com.test.presentation.utils.onError
 import com.test.presentation.utils.onLoading
 import com.test.presentation.utils.onSuccess
+import com.test.presentation.utils.showView
 import com.test.presentation.views.constanta.Const
 import com.test.shared.base.BaseFragment
 import com.test.shared.customview.LoadingDialog
@@ -65,9 +68,40 @@ class DetailUserGithubFragment :
         ivImgDetailUser.loadNetworkImage(data.avatarUrl)
         tvDetailName.text = data.name
         tvDetailUsername.text = data.login
-        tvDetailBio.text = data.bio
         tvFollowers.text = data.followers
         tvFollowing.text = data.following
         tvRepository.text = data.publicRepos
+        tvBio.text = data.bio
+        data.location.ifNotNullOrBlankThenElse({
+            llLocation.showView()
+            tvLocation.text = it
+        }, {
+            llLocation.hideView()
+        })
+        data.company.ifNotNullOrBlankThenElse({
+            llCompany.showView()
+            tvCompany.text = it
+        }, {
+            llCompany.hideView()
+        })
+        data.blog.ifNotNullOrBlankThenElse({
+            llBlog.showView()
+            tvBlog.text = it
+        }, {
+            llBlog.hideView()
+        })
+        data.email.ifNotNullOrBlankThenElse({
+            llEmail.showView()
+            tvEmail.text = it
+        }, {
+            llEmail.hideView()
+        })
+        data.twitterUsername.ifNotNullOrBlankThenElse({
+            llTwitter.showView()
+            val twitterId = "@$it"
+            tvTwitter.text = twitterId
+        }, {
+            llTwitter.hideView()
+        })
     }
 }

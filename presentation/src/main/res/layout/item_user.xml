@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cv_card_employee"
+    android:id="@+id/cv_card_user"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="12dp"
@@ -11,7 +11,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_background_employee"
+        android:id="@+id/cl_background_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -35,7 +35,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/text_20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/tv_item_location"
+            app:layout_constraintBottom_toTopOf="@id/tv_item_link"
             app:layout_constraintEnd_toStartOf="@id/iv_chevron"
             app:layout_constraintStart_toEndOf="@id/iv_img_user"
             app:layout_constraintTop_toTopOf="@id/iv_img_user"
@@ -43,7 +43,7 @@
             tools:text="Helmy Danu Prameireza" />
 
         <TextView
-            android:id="@+id/tv_item_location"
+            android:id="@+id/tv_item_link"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimens_4dp"
@@ -52,7 +52,7 @@
             android:ellipsize="end"
             android:lines="1"
             android:textSize="@dimen/text_14sp"
-            tools:text="jakarta"
+            tools:text="github.com"
             app:layout_constraintBottom_toBottomOf="@id/iv_img_user"
             app:layout_constraintStart_toEndOf="@id/iv_img_user"
             app:layout_constraintTop_toBottomOf="@id/tv_item_name_user" />

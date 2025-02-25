@@ -5,11 +5,13 @@ import androidx.work.Data
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import com.squareup.moshi.Moshi
 import com.test.domain.models.UserSearchDomain
 import com.test.domain.worker.SearchUserWorker
 import com.test.presentation.mapper.toListUI
-import com.test.presentation.models.UserSearchUI
+import com.test.presentation.models.UserItemUI
 import com.test.presentation.utils.UiState
+import com.test.presentation.utils.observeListWorkState
 import com.test.presentation.utils.observeWorkState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -19,11 +21,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ListUserGithubViewModel @Inject constructor(
-    private val workManager: WorkManager
+    private val workManager: WorkManager,
+    private val moshi: Moshi
 ) : ViewModel() {
     private val _searchWorkId = MutableStateFlow<UUID?>(null)
-    val searchWork: Flow<UiState<List<UserSearchUI>>> =
-        workManager.observeWorkState(_searchWorkId) { userList: List<UserSearchDomain> ->
+    val searchWork: Flow<UiState<List<UserItemUI>>> =
+        workManager.observeListWorkState(_searchWorkId, moshi) { userList ->
             if (userList.isNotEmpty()) UiState.Success(userList.toListUI()) else UiState.Empty
         }
 

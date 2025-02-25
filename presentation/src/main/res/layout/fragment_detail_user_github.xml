@@ -73,7 +73,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_detail_name"
         tools:text="First Name" />
 
-
     <LinearLayout
         android:id="@+id/ll_stat"
         android:layout_width="0dp"
@@ -83,6 +82,7 @@
         android:background="@drawable/background_white_round_12"
         android:baselineAligned="false"
         android:orientation="horizontal"
+        android:elevation="@dimen/dimens_2dp"
         android:paddingVertical="@dimen/dimens_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

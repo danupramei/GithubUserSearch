@@ -2,7 +2,7 @@ package com.test.presentation.mapper
 
 import com.test.domain.models.UserDomain
 import com.test.domain.models.UserSearchDomain
-import com.test.presentation.models.UserSearchUI
+import com.test.presentation.models.UserItemUI
 import com.test.presentation.models.UserUI
 
 fun UserDomain?.toUiModel(): UserUI = this?.run {
@@ -23,14 +23,14 @@ fun UserDomain?.toUiModel(): UserUI = this?.run {
     )
 } ?: UserUI()
 
-fun List<UserSearchDomain>?.toListUI(): List<UserSearchUI> =
+fun List<UserSearchDomain>?.toListUI(): List<UserItemUI> =
     this.orEmpty().map { it.toUiModel() }
 
-fun UserSearchDomain?.toUiModel(): UserSearchUI = this?.run {
-    UserSearchUI(
+fun UserSearchDomain?.toUiModel(): UserItemUI = this?.run {
+    UserItemUI(
         id = id,
         username = login,
         avatarUrl = avatarUrl,
         linkGithub = htmlUrl
     )
-} ?: UserSearchUI()
+} ?: UserItemUI()

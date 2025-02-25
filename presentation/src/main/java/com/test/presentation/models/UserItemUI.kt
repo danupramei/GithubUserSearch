@@ -1,6 +1,6 @@
 package com.test.presentation.models
 
-data class UserSearchUI(
+data class UserItemUI(
     val avatarUrl: String = "",
     val linkGithub: String = "",
     val id: Int = 0,

@@ -1,5 +1,8 @@
 package com.test.domain.models
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class UserDomain(
     val avatarUrl: String = "",
     val bio: String = "",

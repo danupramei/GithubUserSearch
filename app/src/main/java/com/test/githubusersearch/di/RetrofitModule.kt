@@ -2,7 +2,7 @@ package com.test.githubusersearch.di
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.google.gson.GsonBuilder
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -22,17 +22,14 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun provideRetrofitBuilder(
-        gsonConverterFactory: GsonConverterFactory
+        moshiConverterFactory: MoshiConverterFactory
     ): Retrofit.Builder = Retrofit.Builder()
-        .addConverterFactory(gsonConverterFactory)
+        .addConverterFactory(moshiConverterFactory)
 
     @Provides
     @Singleton
-    fun provideGsonConverterFactory(): GsonConverterFactory {
-        val gson = GsonBuilder()
-            .setLenient()
-            .create()
-        return GsonConverterFactory.create(gson)
+    fun provideGsonConverterFactory(moshi: Moshi): MoshiConverterFactory {
+        return MoshiConverterFactory.create(moshi)
     }
 
     @Provides

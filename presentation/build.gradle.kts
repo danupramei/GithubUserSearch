@@ -51,7 +51,6 @@ dependencies {
     implementation (libs.dagger.hilt.android)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.moshi.adapters)
-    implementation(libs.code.gson)
     ksp(libs.dagger.hilt.compiler)
 
     implementation(libs.androidx.navigation.fragment.ktx)

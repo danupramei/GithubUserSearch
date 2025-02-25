@@ -12,21 +12,11 @@ fun SearchResponse?.toListDomain(): List<UserSearchDomain> = this?.run {
 fun SearchResponse.UserSearchResponse?.toDomainModel(): UserSearchDomain = this?.run {
     UserSearchDomain(
         avatarUrl = avatarUrl.orEmpty(),
-        eventsUrl = eventsUrl.orEmpty(),
-        followersUrl = followersUrl.orEmpty(),
-        followingUrl = followingUrl.orEmpty(),
-        gistsUrl = gistsUrl.orEmpty(),
-        gravatarId = gravatarId.orEmpty(),
         htmlUrl = htmlUrl.orEmpty(),
         id = id ?: 0,
         login = login.orEmpty(),
         nodeId = nodeId.orEmpty(),
-        organizationsUrl = organizationsUrl.orEmpty(),
-        receivedEventsUrl = receivedEventsUrl.orEmpty(),
-        reposUrl = reposUrl.orEmpty(),
         siteAdmin = siteAdmin ?: false,
-        starredUrl = starredUrl.orEmpty(),
-        subscriptionsUrl = subscriptionsUrl.orEmpty(),
         type = type.orEmpty(),
         url = url.orEmpty()
     )

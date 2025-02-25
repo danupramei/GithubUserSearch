@@ -10,7 +10,7 @@ import com.test.domain.repository.UsersRepository
 import com.test.domain.utils.DomainResult
 import javax.inject.Inject
 
-class UsersRepositoryImpl @Inject constructor(
+class UserRepositoryImpl @Inject constructor(
     private val userServices: GithubUserServices
 ) : UsersRepository {
 

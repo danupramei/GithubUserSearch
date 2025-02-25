@@ -6,23 +6,22 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.squareup.moshi.Moshi
-import com.test.domain.models.UserSearchDomain
 import com.test.domain.worker.SearchUserWorker
 import com.test.presentation.mapper.toListUI
 import com.test.presentation.models.UserItemUI
 import com.test.presentation.utils.UiState
 import com.test.presentation.utils.observeListWorkState
-import com.test.presentation.utils.observeWorkState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.UUID
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
 class ListUserGithubViewModel @Inject constructor(
     private val workManager: WorkManager,
-    private val moshi: Moshi
+    moshi: Moshi
 ) : ViewModel() {
     private val _searchWorkId = MutableStateFlow<UUID?>(null)
     val searchWork: Flow<UiState<List<UserItemUI>>> =
@@ -37,6 +36,7 @@ class ListUserGithubViewModel @Inject constructor(
 
         val workRequest = OneTimeWorkRequestBuilder<SearchUserWorker>()
             .setInputData(data)
+            .setInitialDelay(800, TimeUnit.MILLISECONDS)
             .build()
 
         workManager.enqueueUniqueWork(

@@ -1,6 +1,6 @@
 package com.test.githubusersearch.di
 
-import com.test.data.repository.UsersRepositoryImpl
+import com.test.data.repository.UserRepositoryImpl
 import com.test.data.services.GithubUserServices
 import com.test.domain.repository.UsersRepository
 import dagger.Module
@@ -15,6 +15,6 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideEmployeeRepository(apiService: GithubUserServices): UsersRepository {
-        return UsersRepositoryImpl(apiService)
+        return UserRepositoryImpl(apiService)
     }
 }

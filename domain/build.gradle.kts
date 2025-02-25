@@ -44,7 +44,6 @@ dependencies {
     implementation (libs.dagger.hilt.android)
     implementation(libs.androidx.hilt.work)
     implementation(libs.androidx.work.runtime.ktx)
-    implementation(libs.code.gson)
     ksp(libs.dagger.hilt.compiler)
     ksp(libs.androidx.hilt.compiler)
     testImplementation(libs.junit)

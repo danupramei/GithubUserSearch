@@ -5,9 +5,10 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.Data
 import androidx.work.WorkerParameters
-import com.google.gson.Gson
+import com.squareup.moshi.Moshi
 import com.test.domain.usecases.SearchUserUseCase
 import com.test.domain.utils.DomainResult
+import com.test.domain.utils.toJsonList
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
@@ -15,7 +16,8 @@ import dagger.assisted.AssistedInject
 class SearchUserWorker @AssistedInject constructor(
     private val searchUseCase: SearchUserUseCase,
     @Assisted appContext: Context,
-    @Assisted workerParams: WorkerParameters
+    @Assisted workerParams: WorkerParameters,
+    private val moshi: Moshi
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
@@ -23,7 +25,7 @@ class SearchUserWorker @AssistedInject constructor(
         return try {
             when (val response = searchUseCase.invoke(query)) {
                 is DomainResult.Success -> {
-                    val jsonUsers = Gson().toJson(response.data)
+                    val jsonUsers = moshi.toJsonList(response.data)
                     Result.success(Data.Builder().putString("RESULT", jsonUsers).build())
                 }
 
@@ -36,7 +38,7 @@ class SearchUserWorker @AssistedInject constructor(
                 )
             }
         } catch (e: Exception) {
-            Result.failure(Data.Builder().putString("ERROR", "Terjadi kesalahan").build())
+            Result.failure(Data.Builder().putString("ERROR", e.message).build())
         }
     }
 }

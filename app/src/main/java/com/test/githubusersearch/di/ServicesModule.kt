@@ -14,7 +14,7 @@ import javax.inject.Singleton
 object ServicesModule {
     @Provides
     @Singleton
-    fun provideEmployeeServices(
+    fun provideGithubUserServices(
         retrofitBuilder: Retrofit.Builder,
         okHttpClient: OkHttpClient
     ): GithubUserServices {

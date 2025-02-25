@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -9,20 +11,28 @@ android {
     namespace = "com.test.data"
     compileSdk = 35
 
+    buildFeatures {
+        buildConfig = true
+    }
+    
     defaultConfig {
         minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        val keystoreFile = project.rootProject.file("local.properties")
+        val properties = Properties()
+        properties.load(keystoreFile.inputStream())
+        buildConfigField("String", "API_KEY", properties.getProperty("API_KEY"))
     }
 
     buildTypes {
+
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+                "proguard-rules.pro")
         }
     }
     compileOptions {

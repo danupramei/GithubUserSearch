@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.swiperefreshlayout)
     implementation (libs.dagger.hilt.android)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.code.gson)
     ksp(libs.dagger.hilt.compiler)
 
     implementation(libs.androidx.navigation.fragment.ktx)

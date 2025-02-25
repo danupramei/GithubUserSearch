@@ -6,6 +6,6 @@ import com.test.domain.utils.DomainResult
 
 interface UsersRepository {
     suspend fun searchUsers(query: String): DomainResult<List<UserSearchDomain>>
-    suspend fun getListUser(): DomainResult<List<UserDomain>>
+    suspend fun getListUser(): DomainResult<List<UserSearchDomain>>
     suspend fun getUser(username: String): DomainResult<UserDomain>
 }

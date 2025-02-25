@@ -23,5 +23,5 @@ interface GithubUserServices {
     @GET("users")
     suspend fun getListUser(
         @Header("Authorization") authorization: String
-    ): Response<List<UserResponse>>
+    ): Response<List<SearchResponse.UserSearchResponse>>
 }

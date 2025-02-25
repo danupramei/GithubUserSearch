@@ -22,7 +22,7 @@ fun SearchResponse.UserSearchResponse?.toDomainModel(): UserSearchDomain = this?
     )
 } ?: UserSearchDomain()
 
-fun List<UserResponse>?.toListDomain(): List<UserDomain> =
+fun List<SearchResponse.UserSearchResponse>?.toListDomain(): List<UserSearchDomain> =
     this.orEmpty().map { it.toDomainModel() }
 
 fun UserResponse?.toDomainModel(): UserDomain = this?.run {

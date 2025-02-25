@@ -14,7 +14,7 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Provides
     @Singleton
-    fun provideEmployeeRepository(apiService: GithubUserServices): UsersRepository {
+    fun provideUserRepository(apiService: GithubUserServices): UsersRepository {
         return UserRepositoryImpl(apiService)
     }
 }

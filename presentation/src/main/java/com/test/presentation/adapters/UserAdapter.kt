@@ -18,7 +18,7 @@ class UserAdapter @Inject constructor() : BaseAdapter<UserItemUI, ItemUserBindin
 ) {
     private var onItemClicked: (String) -> Unit = {}
 
-    fun setOnItemEmployeeClicked(onItemClicked: (String) -> Unit) {
+    fun setOnItemUserClicked(onItemClicked: (String) -> Unit) {
         this.onItemClicked = onItemClicked
     }
 

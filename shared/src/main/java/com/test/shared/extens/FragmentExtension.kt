@@ -16,6 +16,9 @@ fun Fragment.onBackPressed() {
 fun Fragment.showToastMessage(message: String) {
     activity?.showToastMessage(message)
 }
+fun Fragment.hideKeyboard() {
+    view?.let { activity?.hideKeyboard(it) }
+}
 
 fun Fragment.navigate(
     route: String,

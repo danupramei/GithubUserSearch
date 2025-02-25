@@ -8,14 +8,19 @@ import androidx.lifecycle.Lifecycle
 import com.test.presentation.adapters.UserAdapter
 import com.test.presentation.databinding.FragmentListUserGithubBinding
 import com.test.presentation.enums.RouteEnum
+import com.test.presentation.models.UserItemUI
+import com.test.presentation.utils.UiState
 import com.test.presentation.utils.launchAndCollectIn
 import com.test.presentation.utils.onEmpty
 import com.test.presentation.utils.onError
+import com.test.presentation.utils.onLoading
 import com.test.presentation.utils.onSuccess
 import com.test.presentation.views.constanta.Const
 import com.test.shared.base.BaseFragment
+import com.test.shared.extens.clickWithDebounce
 import com.test.shared.extens.dpToPixels
 import com.test.shared.extens.gone
+import com.test.shared.extens.hideKeyboard
 import com.test.shared.extens.navigate
 import com.test.shared.extens.showToastMessage
 import com.test.shared.extens.verticalLinearLayoutManager
@@ -48,37 +53,35 @@ class ListUserGithubFragment :
         }
         etSearch.doAfterTextChanged {
             it?.let { text ->
+//                swipeListUser.isRefreshing = true
                 if (text.isNotBlank()) {
                     viewModel.search(etSearch.text.toString())
+                    ivClear.visible()
                 } else {
-                    // TODO
+                    viewModel.getListEmployee()
                 }
             }
+        }
+        ivClear.clickWithDebounce {
+            etSearch.setText("")
+            etSearch.clearFocus()
+            hideKeyboard()
+            it.gone()
         }
     }
 
     private fun observe() = with(binding) {
+        viewModel.listUser.launchAndCollectIn(
+            viewLifecycleOwner,
+            Lifecycle.State.RESUMED
+        ) { state ->
+            showDataList(state)
+        }
         viewModel.searchWork.launchAndCollectIn(
             viewLifecycleOwner,
             Lifecycle.State.RESUMED
         ) { state ->
-            state.onSuccess { list ->
-                rcListUser.visible()
-                adapterUser.apply {
-                    submitList(list.orEmpty())
-                    setOnItemEmployeeClicked { username ->
-                        navigateToDetail(username)
-                    }
-                }
-                swipeListUser.isRefreshing = false
-            }.onError {
-                showToastMessage(it.orEmpty())
-                rcListUser.gone()
-                swipeListUser.isRefreshing = false
-            }.onEmpty {
-                rcListUser.gone()
-                swipeListUser.isRefreshing = false
-            }
+            showDataList(state)
         }
     }
 
@@ -97,11 +100,31 @@ class ListUserGithubFragment :
         )
     }
 
-    private fun getUser() = with(binding){
+    private fun showDataList(state: UiState<List<UserItemUI>>) = with(binding) {
+        state.onSuccess { list ->
+            rcListUser.visible()
+            adapterUser.apply {
+                submitList(list.orEmpty())
+                setOnItemUserClicked { username ->
+                    navigateToDetail(username)
+                }
+            }
+            swipeListUser.isRefreshing = false
+        }.onError {
+            showToastMessage(it.orEmpty())
+            rcListUser.gone()
+            swipeListUser.isRefreshing = false
+        }.onEmpty {
+            rcListUser.gone()
+            swipeListUser.isRefreshing = false
+        }.onLoading { swipeListUser.isRefreshing = true }
+    }
+
+    private fun getUser() = with(binding) {
         if (etSearch.text.isNotBlank()) {
             viewModel.search(etSearch.text.toString())
         } else {
-            viewModel
+            viewModel.getListEmployee()
         }
     }
 

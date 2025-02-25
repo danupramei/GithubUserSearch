@@ -21,8 +21,11 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getListUser(): DomainResult<List<UserDomain>> {
-        TODO("Not yet implemented")
+    override suspend fun getListUser(): DomainResult<List<UserSearchDomain>> {
+        val result = userServices.getListUser(BuildConfig.API_KEY)
+        return processResponseSuspended(result) {
+            DomainResult.Success(it.toListDomain())
+        }
     }
 
     override suspend fun getUser(username: String): DomainResult<UserDomain> {

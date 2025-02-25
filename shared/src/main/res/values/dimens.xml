@@ -13,4 +13,12 @@
     <dimen name="dimens_40dp">40dp</dimen>
     <dimen name="text_26sp">26sp</dimen>
     <dimen name="dimens_150dp">150dp</dimen>
+    <dimen name="dimens_12dp">12dp</dimen>
+    <dimen name="dimens_120dp">120dp</dimen>
+    <dimen name="dimens_2dp">2dp</dimen>
+    <dimen name="dimens_64dp">64dp</dimen>
+    <dimen name="text_14sp">14sp</dimen>
+    <dimen name="dimens_24dp">24dp</dimen>
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="dimens_14dp">14dp</dimen>
 </resources>

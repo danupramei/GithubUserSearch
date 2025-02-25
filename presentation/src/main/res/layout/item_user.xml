@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="12dp"
-    app:cardElevation="@dimen/dimens_2dp"
+    app:cardElevation="0dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -46,16 +46,16 @@
             android:id="@+id/tv_item_link"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimens_4dp"
             android:layout_marginStart="@dimen/dimens_8dp"
             android:layout_marginTop="@dimen/dimens_4dp"
+            android:layout_marginEnd="@dimen/dimens_4dp"
             android:ellipsize="end"
             android:lines="1"
             android:textSize="@dimen/text_14sp"
-            tools:text="github.com"
             app:layout_constraintBottom_toBottomOf="@id/iv_img_user"
             app:layout_constraintStart_toEndOf="@id/iv_img_user"
-            app:layout_constraintTop_toBottomOf="@id/tv_item_name_user" />
+            app:layout_constraintTop_toBottomOf="@id/tv_item_name_user"
+            tools:text="github.com" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_chevron"

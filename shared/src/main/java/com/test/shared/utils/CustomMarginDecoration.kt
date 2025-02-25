@@ -24,7 +24,10 @@ class CustomMarginDecoration(
         outRect.right = horizontalPadding
         when (position) {
             0 -> outRect.top = firstTopPadding
-            itemCount - 1 -> outRect.bottom = lastBottomPadding
+            itemCount - 1 -> {
+                outRect.top = topPadding
+                outRect.bottom = lastBottomPadding
+            }
             else -> outRect.top = topPadding
         }
     }

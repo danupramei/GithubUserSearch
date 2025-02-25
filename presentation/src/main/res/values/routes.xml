@@ -2,4 +2,5 @@
 <resources>
     <string name="list_user_route">android-app://github.app/list_user</string>
     <string name="detail_user_route">android-app://github.app/detail_user</string>
+    <string name="search_user_route">android-app://github.app/search_user</string>
 </resources>

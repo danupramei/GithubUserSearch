@@ -1,7 +1,11 @@
-package com.test.presentation.views.listuser
+package com.test.presentation.views.searchuser
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import com.test.presentation.adapters.UserAdapter
@@ -13,11 +17,13 @@ import com.test.presentation.utils.onError
 import com.test.presentation.utils.onLoading
 import com.test.presentation.utils.onSuccess
 import com.test.presentation.views.constanta.Const
+import com.test.presentation.views.listuser.ListUserGithubViewModel
 import com.test.shared.base.BaseFragment
 import com.test.shared.extens.clickWithDebounce
 import com.test.shared.extens.dpToPixels
 import com.test.shared.extens.gone
 import com.test.shared.extens.navigate
+import com.test.shared.extens.onBackPressed
 import com.test.shared.extens.showToastMessage
 import com.test.shared.extens.verticalLinearLayoutManager
 import com.test.shared.extens.visible
@@ -26,17 +32,17 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ListUserGithubFragment :
+class SearchUserGithubFragment :
     BaseFragment<FragmentListUserGithubBinding>(FragmentListUserGithubBinding::inflate) {
     @Inject
     lateinit var adapterUser: UserAdapter
 
     private val viewModel by viewModels<ListUserGithubViewModel>()
+    private var keyword = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setColorStatusBar(com.test.shared.R.color.blue)
-        viewModel.selectAllUser()
         initView()
         initAdapter()
         observe()
@@ -44,21 +50,33 @@ class ListUserGithubFragment :
 
     private fun initView() = with(binding) {
         swipeListUser.setOnRefreshListener {
-            viewModel.getListUser()
+            viewModel.search(keyword)
         }
-        etSearch.isFocusable = false
-        etSearch.isClickable = true
-        etSearch.isCursorVisible = false
-        etSearch.clickWithDebounce {
-            navigateToSearch()
+        showKeyboard(etSearch)
+        etSearch.doAfterTextChanged {
+            it?.let { text ->
+                if (text.toString().isNotBlank()) {
+                    keyword = text.toString()
+                    viewModel.search(keyword)
+                    rcListUser.visible()
+                    ivClear.visible()
+                } else {
+                    keyword = ""
+                    rcListUser.gone()
+                    ivClear.gone()
+                }
+            }
         }
-        llSearchBar.clickWithDebounce {
-            navigateToSearch()
+        ivClear.clickWithDebounce {
+            etSearch.text.clear()
+            etSearch.clearFocus()
+            keyword = ""
+            onBackPressed()
         }
     }
 
     private fun observe() = with(binding) {
-        viewModel.listUser.launchAndCollectIn(
+        viewModel.searchWork.launchAndCollectIn(
             viewLifecycleOwner,
             Lifecycle.State.RESUMED
         ) { state ->
@@ -97,16 +115,17 @@ class ListUserGithubFragment :
         )
     }
 
+    private fun showKeyboard(editText: EditText) {
+        editText.requestFocus()
+        val imm =
+            editText.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+    }
+
     private fun navigateToDetail(username: String) {
         navigate(
             route = RouteEnum.DETAIL_USER.getRouteName(this),
             extras = mapOf(Const.ARG_USERNAME to username)
-        )
-    }
-
-    private fun navigateToSearch() {
-        navigate(
-            route = RouteEnum.SEARCH_USER.getRouteName(this)
         )
     }
 }

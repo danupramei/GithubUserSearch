@@ -17,5 +17,11 @@
         android:label="fragment_detail_user_github"
         app:route="@string/detail_user_route"
         tools:layout="@layout/fragment_detail_user_github" />
+    <fragment
+        android:id="@+id/searchUserGithubFragment"
+        android:name="com.test.presentation.views.searchuser.SearchUserGithubFragment"
+        android:label="SearchUserGithubFragment"
+        app:route="@string/search_user_route"
+        tools:layout="@layout/fragment_list_user_github" />
 
 </navigation>

@@ -14,7 +14,6 @@ data class UserSearchDomain(
     val organizationsUrl: String = "",
     val receivedEventsUrl: String = "",
     val reposUrl: String = "",
-    val score: Int = 0,
     val siteAdmin: Boolean = false,
     val starredUrl: String = "",
     val subscriptionsUrl: String = "",

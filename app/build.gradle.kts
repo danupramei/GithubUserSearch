@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.squareup.retrofit2)
     implementation(libs.squareup.retrofit2.gson)
     implementation(libs.squareup.okhttp3)
+    implementation(libs.chucker.library)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -42,8 +42,6 @@ data class SearchResponse(
         val receivedEventsUrl: String? = "",
         @Json(name = "repos_url")
         val reposUrl: String? = "",
-        @Json(name = "score")
-        val score: Int? = 0,
         @Json(name = "site_admin")
         val siteAdmin: Boolean? = false,
         @Json(name = "starred_url")

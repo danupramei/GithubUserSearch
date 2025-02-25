@@ -24,7 +24,6 @@ fun SearchResponse.UserSearchResponse?.toDomainModel(): UserSearchDomain = this?
         organizationsUrl = organizationsUrl.orEmpty(),
         receivedEventsUrl = receivedEventsUrl.orEmpty(),
         reposUrl = reposUrl.orEmpty(),
-        score = score ?: 0,
         siteAdmin = siteAdmin ?: false,
         starredUrl = starredUrl.orEmpty(),
         subscriptionsUrl = subscriptionsUrl.orEmpty(),

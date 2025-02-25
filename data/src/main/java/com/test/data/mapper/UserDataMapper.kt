@@ -28,7 +28,7 @@ fun List<SearchResponse.UserSearchResponse>?.toListDomain(): List<UserSearchDoma
 fun UserResponse?.toDomainModel(): UserDomain = this?.run {
     UserDomain(
         avatarUrl = avatarUrl.orEmpty(),
-        bio = bio.orEmpty(),
+        bio = bio ?: "-",
         blog = blog.orEmpty(),
         company = company.orEmpty(),
         createdAt = createdAt.orEmpty(),

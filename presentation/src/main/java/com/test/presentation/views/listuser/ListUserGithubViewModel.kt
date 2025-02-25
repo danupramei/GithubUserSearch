@@ -41,7 +41,7 @@ class ListUserGithubViewModel @Inject constructor(
             if (userList.isNotEmpty()) UiState.Success(userList.toListUI()) else UiState.Empty
         }
 
-    fun getListEmployee() {
+    fun getListUser() {
         viewModelScope.launch(Dispatchers.IO) {
             _listUser.emit(UiState.Loading)
             val result = getListUserUseCase().mapToModelUi { it.toListUI() }

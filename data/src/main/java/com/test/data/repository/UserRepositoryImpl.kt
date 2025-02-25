@@ -1,6 +1,7 @@
 package com.test.data.repository
 
 import com.test.data.BuildConfig
+import com.test.data.mapper.toDomainModel
 import com.test.data.mapper.toListDomain
 import com.test.data.network.processResponseSuspended
 import com.test.data.services.GithubUserServices
@@ -29,6 +30,9 @@ class UserRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getUser(username: String): DomainResult<UserDomain> {
-        TODO("Not yet implemented")
+        val result = userServices.getUser(username)
+        return processResponseSuspended(result) {
+            DomainResult.Success(it.toDomainModel())
+        }
     }
 }

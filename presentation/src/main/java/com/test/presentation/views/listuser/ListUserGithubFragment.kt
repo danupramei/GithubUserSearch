@@ -53,12 +53,11 @@ class ListUserGithubFragment :
         }
         etSearch.doAfterTextChanged {
             it?.let { text ->
-//                swipeListUser.isRefreshing = true
                 if (text.isNotBlank()) {
                     viewModel.search(etSearch.text.toString())
                     ivClear.visible()
                 } else {
-                    viewModel.getListEmployee()
+                    viewModel.getListUser()
                 }
             }
         }
@@ -70,7 +69,7 @@ class ListUserGithubFragment :
         }
     }
 
-    private fun observe() = with(binding) {
+    private fun observe() {
         viewModel.listUser.launchAndCollectIn(
             viewLifecycleOwner,
             Lifecycle.State.RESUMED
@@ -124,7 +123,7 @@ class ListUserGithubFragment :
         if (etSearch.text.isNotBlank()) {
             viewModel.search(etSearch.text.toString())
         } else {
-            viewModel.getListEmployee()
+            viewModel.getListUser()
         }
     }
 

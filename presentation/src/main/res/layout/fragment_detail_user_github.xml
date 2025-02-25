@@ -10,6 +10,7 @@
         android:id="@+id/iv_imageview"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dimens_8dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@id/ll_stat"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +60,7 @@
         tools:text="First Name" />
 
     <TextView
-        android:id="@+id/tv_detail_location"
+        android:id="@+id/tv_detail_username"
         android:layout_width="@dimen/dimens_150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimens_4dp"
@@ -78,15 +79,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimens_16dp"
-        android:layout_marginTop="@dimen/dimens_12dp"
+        android:layout_marginTop="@dimen/dimens_20dp"
         android:background="@drawable/background_white_round_12"
         android:baselineAligned="false"
-        android:orientation="horizontal"
         android:elevation="@dimen/dimens_2dp"
+        android:orientation="horizontal"
         android:paddingVertical="@dimen/dimens_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_detail_location">
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_username">
 
         <LinearLayout
             android:layout_width="0dp"

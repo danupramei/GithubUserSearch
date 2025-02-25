@@ -1,5 +1,6 @@
 package com.test.githubusersearch.di
 
+import com.test.data.local.dao.UserDao
 import com.test.data.repository.UserRepositoryImpl
 import com.test.data.services.GithubUserServices
 import com.test.domain.repository.UsersRepository
@@ -14,7 +15,10 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Provides
     @Singleton
-    fun provideUserRepository(apiService: GithubUserServices): UsersRepository {
-        return UserRepositoryImpl(apiService)
+    fun provideUserRepository(
+        apiService: GithubUserServices,
+        userDao: UserDao
+    ): UsersRepository {
+        return UserRepositoryImpl(apiService, userDao)
     }
 }

@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.squareup.retrofit2.moshi)
     implementation(libs.squareup.okhttp3)
     implementation(libs.chucker.library)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
 
     testImplementation(libs.junit)

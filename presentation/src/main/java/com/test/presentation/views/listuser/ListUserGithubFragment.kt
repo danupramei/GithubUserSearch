@@ -39,7 +39,7 @@ class ListUserGithubFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setColorStatusBar(com.test.shared.R.color.white)
+        setColorStatusBar(com.test.shared.R.color.blue)
         getUser()
         initView()
         initAdapter()
@@ -49,7 +49,7 @@ class ListUserGithubFragment :
     private fun initView() = with(binding) {
         swipeListUser.isRefreshing = true
         swipeListUser.setOnRefreshListener {
-            getUser()
+            getUserOnRefresh()
         }
         etSearch.doAfterTextChanged {
             it?.let { text ->
@@ -57,7 +57,7 @@ class ListUserGithubFragment :
                     viewModel.search(etSearch.text.toString())
                     ivClear.visible()
                 } else {
-                    viewModel.getListUser()
+                    viewModel.selectAllUser()
                 }
             }
         }
@@ -119,11 +119,19 @@ class ListUserGithubFragment :
         }.onLoading { swipeListUser.isRefreshing = true }
     }
 
-    private fun getUser() = with(binding) {
+    private fun getUserOnRefresh() = with(binding) {
         if (etSearch.text.isNotBlank()) {
             viewModel.search(etSearch.text.toString())
         } else {
             viewModel.getListUser()
+        }
+    }
+
+    private fun getUser() = with(binding) {
+        if (etSearch.text.isNotBlank()) {
+            viewModel.search(etSearch.text.toString())
+        } else {
+            viewModel.selectAllUser()
         }
     }
 

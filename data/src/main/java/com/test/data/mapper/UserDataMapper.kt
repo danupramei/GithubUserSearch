@@ -1,5 +1,6 @@
 package com.test.data.mapper
 
+import com.test.data.local.entity.UserEntity
 import com.test.data.models.SearchResponse
 import com.test.data.models.UserResponse
 import com.test.domain.models.UserDomain
@@ -61,3 +62,24 @@ fun UserResponse?.toDomainModel(): UserDomain = this?.run {
         url = url.orEmpty()
     )
 } ?: UserDomain()
+
+fun List<UserSearchDomain>?.toEntityModelList(): List<UserEntity> =
+    this.orEmpty().map { it.toEntityModel() }
+
+fun UserSearchDomain?.toEntityModel(): UserEntity = this?.run {
+    UserEntity(
+        avatarUrl = avatarUrl,
+        githubUrl = htmlUrl,
+        userId = id,
+        username = login
+    )
+} ?: UserEntity()
+
+fun UserEntity?.toDomainModel(): UserSearchDomain = this?.run {
+    UserSearchDomain(
+        avatarUrl = avatarUrl.orEmpty(),
+        htmlUrl = githubUrl.orEmpty(),
+        id = userId ?: 0,
+        login = username.orEmpty()
+    )
+} ?: UserSearchDomain()

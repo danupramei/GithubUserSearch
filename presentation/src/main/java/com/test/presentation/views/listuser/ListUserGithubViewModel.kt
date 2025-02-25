@@ -8,6 +8,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.squareup.moshi.Moshi
 import com.test.domain.usecases.GetListUserUseCase
+import com.test.domain.usecases.SelectAllUserDbUseCase
 import com.test.domain.worker.SearchUserWorker
 import com.test.presentation.mapper.toListUI
 import com.test.presentation.models.UserItemUI
@@ -29,6 +30,7 @@ import javax.inject.Inject
 class ListUserGithubViewModel @Inject constructor(
     private val workManager: WorkManager,
     private val getListUserUseCase: GetListUserUseCase,
+    private val selectAllUserDbUseCase: SelectAllUserDbUseCase,
     moshi: Moshi
 ) : ViewModel() {
     private val _listUser =
@@ -46,6 +48,18 @@ class ListUserGithubViewModel @Inject constructor(
             _listUser.emit(UiState.Loading)
             val result = getListUserUseCase().mapToModelUi { it.toListUI() }
             _listUser.mapToUiState(result, Dispatchers.Main)
+        }
+    }
+
+    fun selectAllUser() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _listUser.emit(UiState.Loading)
+            val result = selectAllUserDbUseCase().toListUI()
+            if (result.isEmpty()) {
+                getListUser()
+            } else {
+                _listUser.emit(UiState.Success(result))
+            }
         }
     }
 

@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation (libs.dagger.hilt.android)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
     ksp(libs.dagger.hilt.compiler)
     implementation(libs.squareup.retrofit2)
     implementation(libs.squareup.retrofit2.moshi)

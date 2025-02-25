@@ -117,3 +117,9 @@ This application provides a seamless experience for users to search for GitHub u
 4. JSON Parsing
     Uses Moshi for efficient and type-safe JSON parsing.
     Ensures proper data serialization and deserialization for API responses.
+5. Single Activity
+    Use one activity for all screen, it will improved performance & memory usage
+6. Navigation Component
+    Navigation Component is part of Jetpack and helps simplify app navigation by handling Fragment transactions, deep linking, and UI state preservation.
+7. Modularization
+    Modularization in Android development is the practice of splitting an application into multiple, independent modules to improve scalability, maintainability, and reusability.
